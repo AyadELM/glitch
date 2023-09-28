@@ -13,7 +13,7 @@ public class WebSocketService {
     }
 
     public void broadcastMessage(String message) {
-        messagingTemplate.convertAndSend("/topic/messages", message);
+        messagingTemplate.convertAndSend("/hello", message);
     }
 }
 
