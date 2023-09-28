@@ -21,7 +21,8 @@ public class CorsConfig implements WebSocketMessageBrokerConfigurer {
         public void registerStompEndpoints(StompEndpointRegistry registry) {
             // with sockjs
             registry.addEndpoint("/ws-message")
-                .setAllowedOrigins("http://localhost:3000","chrome-extension://oilioclnckkoijghdniegedkbocfpnip")
+                .setAllowedOrigins("http://localhost:3000",
+                    "chrome-extension://oilioclnckkoijghdniegedkbocfpnip")
                 .withSockJS();
 
         }
