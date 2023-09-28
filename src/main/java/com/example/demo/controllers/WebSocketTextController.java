@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.dto.TextMessageDTO;
+import com.example.demo.dto.WhatsAppBusinessAccountDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ public class WebSocketTextController {
     @Autowired
     SimpMessagingTemplate template;
 
-    @PostMapping("/send")
-    public ResponseEntity<Void> sendMessage(@RequestBody TextMessageDTO textMessageDTO) {
-        template.convertAndSend("/topic/message", textMessageDTO);
+    @PostMapping("/webhook")
+    public ResponseEntity<Void> sendMessage(@RequestBody WhatsAppBusinessAccountDTO whatsAppBusinessAccountDTO) {
+        template.convertAndSend("/topic/message", whatsAppBusinessAccountDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @SendTo("/topic/message")
-    public TextMessageDTO broadcastMessage(@Payload TextMessageDTO textMessageDTO) {
+    public WhatsAppBusinessAccountDTO broadcastMessage(@Payload WhatsAppBusinessAccountDTO textMessageDTO) {
         return textMessageDTO;
     }
 
